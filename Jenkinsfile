@@ -5,6 +5,7 @@ pipeline {
    }
    stages {
        stage ('Preparation') {
+           agent { label 'master'}
            environment {
                TF_VER = sh(script: 'cat .terraform-version', , returnStdout: true).trim()
            }
