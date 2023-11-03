@@ -6,12 +6,12 @@ pipeline {
    stages {
        stage ('Preparation') {
            environment {
-               JENKINS_PATH = sh(script: 'pwd', , returnStdout: true).trim()
+               TF_VER = sh(script: 'cat .terraform-version', , returnStdout: true).trim()
            }
            steps {
                echo "Hello world"
-               echo "PATH=${JENKINS_PATH}"
-               sh 'echo "JP=$JENKINS_PATH"'
+               echo "PATH=${TF_VER}"
+               sh 'echo "JP=$TF_VER"'
           }
       }
    }
