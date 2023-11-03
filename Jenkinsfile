@@ -5,7 +5,6 @@ pipeline {
    }
    stages {
        stage ('Preparation') {
-           agent { label 'master'}
            environment {
                JENKINS_PATH = sh(script: 'pwd', , returnStdout: true).trim()
            }
