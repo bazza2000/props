@@ -34,9 +34,7 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
         }
 
         steps {
-                    environment {
-          TF_VER = sh(script: 'cat .terraform-version', , returnStdout: true).trim()
-        }
+            shell(readFileFromWorkspace('.terraform-version'))
             environmentVariables {
                  propertiesFile('.terraform_version')
             }
