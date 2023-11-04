@@ -1,3 +1,7 @@
+InputStream streamFileFromWorkspace(String filePath)
+String readFileFromWorkspace(String filePath)
+String readFileFromWorkspace(String jobName, String filePath) // since 1.25
+
 def currentFolder = new File(__FILE__).getParent()
 def parentFolder = new File(currentFolder).getParent()
 def Team = new ConfigSlurper().parse(new File(parentFolder + "/common.conf").toURL())
@@ -34,6 +38,7 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
           TF_VER = sh(script: 'cat .terraform-version', , returnStdout: true).trim()
         }
         steps {
+            
             environmentVariables {
                  propertiesFile('.terraform_version')
             }
