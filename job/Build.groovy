@@ -6,9 +6,6 @@ def Team = new ConfigSlurper().parse(new File(parentFolder + "/common.conf").toU
 def App = new ConfigSlurper().parse(new File(currentFolder + "/common.conf").toURL())
 
 def GenerateJob(def Team, def App, def env_name, def job_name) {
-    InputStream streamFileFromWorkspace(String filePath)
-    String readFileFromWorkspace(String filePath)
-    String readFileFromWorkspace(String jobName, String filePath) // since 1.25
     def jobname = Team.Name + "-" + env_name + "-" + App.Name + "-" + job_name
 
     def aws_region = "eu-west-2"
