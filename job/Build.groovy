@@ -30,19 +30,6 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
         }
         wrappers {
             timestamps()
-            versionNumberBuilder {
-                projectStartDate('')
-                versionNumberString('${BUILD_DATE_FORMATTED, "yyyyMMddHHmmss"}')
-                worstResultForIncrement('NOT_BUILT')
-                useAsBuildDisplayName(true)
-                environmentVariableName('BUILD_VERSION')
-                environmentPrefixVariable('')
-                buildsToday('')
-                buildsThisWeek('')
-                buildsThisMonth('')
-                buildsThisYear('')
-                buildsAllTime('')
-            }
         }
         steps {
             environmentVariables {
