@@ -1,5 +1,3 @@
-
-
 def currentFolder = new File(__FILE__).getParent()
 def parentFolder = new File(currentFolder).getParent()
 def Team = new ConfigSlurper().parse(new File(parentFolder + "/common.conf").toURL())
@@ -35,10 +33,8 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
 
         steps {
             environmentVariables {
-        script('''
-           mkdir -p tests
-           rm -rf /tmp/tests.tmp
-        ''')
+       shell('echo TF_VAR=`cat .terraform-version` > .jobvars')
+       propertiesFile('.jobvars')
     }
             echo "PATH=${TF_VER}"
         }
