@@ -34,8 +34,9 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
         }
 
         steps {
-            shell(readFileFromWorkspace('.terraform-version'))
-            environmentVariables {
+            environmentVariables {script('''
+           echo "TF_VER=`cat .terraform-version`" > .terraform_version
+        ''')
                  propertiesFile('.terraform_version')
             }
             echo "PATH=${TF_VER}"
