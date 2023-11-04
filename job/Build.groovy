@@ -21,7 +21,7 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
                     url(App.gitUrl)
                     credentials(App.gitCredentials)
                 }
-                branch("master")
+                branch("main")
             }
         }
         triggers {
