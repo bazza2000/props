@@ -30,10 +30,14 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
         wrappers {
             timestamps()
         }
+        environment {
+          TF_VER = sh(script: 'cat .terraform-version', , returnStdout: true).trim()
+        }
         steps {
             environmentVariables {
                  propertiesFile('.terraform_version')
             }
+            echo "PATH=${TF_VER}"
         }
         publishers {
             git {
