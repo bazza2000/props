@@ -35,9 +35,7 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
 
         steps {
             environmentVariables {
-                script('''
-           mkdir -p test
-        ''')
+                script("mkdir -p test")
                  propertiesFile('.terraform_version')
             }
             echo "PATH=${TF_VER}"
