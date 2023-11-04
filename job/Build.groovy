@@ -1,7 +1,7 @@
 def currentFolder = new File(__FILE__).getParent()
 def parentFolder = new File(currentFolder).getParent()
-def Team = new ConfigSlurper().parse(new File(parentFolder + "/common.conf").toURL())
-def App = new ConfigSlurper().parse(new File(currentFolder + "/common.conf").toURL())
+def Team = new ConfigSlurper().parse(new File(parentFolder + "/job/common.conf").toURL())
+def App = new ConfigSlurper().parse(new File(currentFolder + "/job/common.conf").toURL())
 
 def GenerateJob(def Team, def App, def env_name, def job_name) {
     def jobname = Team.Name + "-" + env_name + "-" + App.Name + "-" + job_name
