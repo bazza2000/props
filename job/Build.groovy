@@ -11,7 +11,6 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
     def ecr_repo = "${account_id}.dkr.ecr.${aws_region}.amazonaws.com/${App.Name.toLowerCase()}"
 
     job(jobname) {
-        label("${env_name.toLowerCase()}-slave")
         logRotator {
             numToKeep(30)
             daysToKeep(30)
