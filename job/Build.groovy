@@ -36,7 +36,7 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
        shell('echo TF_VER=`cat .terraform-version` > .jobvars')
        propertiesFile('.jobvars')
     }
-            echo "PATH=${TF_VER}"
+            //echo "PATH=${TF_VER}"
         }
         publishers {
             git {
