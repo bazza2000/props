@@ -44,6 +44,9 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
                 buildsAllTime('')
             }
         }
+        environment {
+            TF_VER = sh(script: 'cat .terraform_version', , returnStdout: true).trim()
+        }
         steps {
             environmentVariables {
                  propertiesFile('.terraform_version')
