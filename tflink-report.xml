@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite tests="2" failures="2" time="0" name="">
+    <properties></properties>
+    <testcase classname="" name="terraform_required_version" time="0">
+      <failure message=":0,0-0: terraform &#34;required_version&#34; attribute is required" type="Warning">Warning: terraform &#34;required_version&#34; attribute is required&#xA;Rule: terraform_required_version&#xA;Range: :0,0-0</failure>
+    </testcase>
+    <testcase classname="main.tf" name="terraform_required_providers" time="0">
+      <failure message="main.tf:1,1-37: Missing version constraint for provider &#34;random&#34; in `required_providers`" type="Warning">Warning: Missing version constraint for provider &#34;random&#34; in `required_providers`&#xA;Rule: terraform_required_providers&#xA;Range: main.tf:1,1-37</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
