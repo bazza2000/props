@@ -39,11 +39,9 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
             //echo "PATH=${TF_VER}"
         }
         publishers {
-            archiveXUnit {
-            jUnit {
-                pattern('*-report.xml')
+            jUnitResultArchiver {
+                testResults('*-report.xml')
             }
-        }
             git {
                 pushOnlyIfSuccess()
                 tag('origin','${TF_VER}-${BUILD_VERSION}') {
