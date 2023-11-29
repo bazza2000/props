@@ -41,6 +41,7 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
         publishers {
             archiveJunit('*-report.xml') {
                 allowEmptyResults()
+                healthScaleFactor(0)
             }
             git {
                 pushOnlyIfSuccess()
@@ -49,9 +50,6 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
                     create()
                 }
             }
-        }
-        jUnit {
-                stopProcessingIfError(false)
         }
     }
 }
