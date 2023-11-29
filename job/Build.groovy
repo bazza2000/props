@@ -42,9 +42,6 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
             archiveJunit('*-report.xml') {
                 allowEmptyResults()
             }
-            jUnit {
-                stopProcessingIfError(false)
-            }
             git {
                 pushOnlyIfSuccess()
                 tag('origin','${TF_VER}-${BUILD_VERSION}') {
@@ -52,6 +49,9 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
                     create()
                 }
             }
+        }
+        jUnit {
+                stopProcessingIfError(false)
         }
     }
 }
