@@ -41,6 +41,8 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
         publishers {
             jUnitResultArchiver {
                 testResults('*-report.xml')
+                skipMarkingBuildUnstable(true)
+                allowEmptyResults(true)
             }
             git {
                 pushOnlyIfSuccess()
