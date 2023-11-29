@@ -35,20 +35,6 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
             environmentVariables {
        shell('echo TF_VER=`cat .terraform-version` > .jobvars')
        propertiesFile('.jobvars')
-                shell('''# TERRAFORM FORMAT
-docker run --rm hashicorp/terraform:${TF_VER} fmt
-# TERRAFORM DOC
-docker run --rm -v $(pwd):/data cytopia/terraform-docs terraform-docs-012 --sort-by required md . > README.md
-# TERRAFORM VALIDATE
-docker run --rm hashicorp/terraform:${TF_VER} validate . --no-color
-# TERRAFORM LINT
-docker run --rm -v $(pwd):/data -t ghcr.io/terraform-linters/tflint --format=junit --force > tflint-report.xml
-# TERRAFORM SECURITY CHECK - TFSEC
-docker run --rm -v "$(pwd):/src" aquasec/tfsec /src --soft-fail -f junit > tfsec-report.xml
-# TERRAFORM SECURITY CHECK - CHECKOV
-docker run --rm -v "$(pwd):/tf" --workdir /tf bridgecrew/checkov --directory /tf --soft-fail -o junitxml > checkov-report.xml
-
-''')
     }
             //echo "PATH=${TF_VER}"
         }
