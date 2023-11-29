@@ -39,7 +39,9 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
             //echo "PATH=${TF_VER}"
         }
         publishers {
-            archiveJunit('*-report.xml')
+            archiveJunit('*-report.xml') {
+                allowEmptyResults()
+            }
             git {
                 pushOnlyIfSuccess()
                 tag('origin','${TF_VER}-${BUILD_VERSION}') {
