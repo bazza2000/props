@@ -35,7 +35,10 @@ def GenerateJob(def Team, def App, def env_name, def job_name) {
             environmentVariables {
        shell('echo TF_VER=`cat .terraform-version` > .jobvars')
        propertiesFile('.jobvars')
-       shell('echo ${App.tfsec_image}')
+                            shell("""
+                |set +e
+                |echo ${App.tfsec_image} ${App.Name.toLowerCase()}
+                """.stripMargin())
     }
             //echo "PATH=${TF_VER}"
         }
